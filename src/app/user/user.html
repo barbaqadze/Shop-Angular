@@ -1,0 +1,65 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      @if (loading) {
+        <div class="text-center my-5">
+          <div class="spinner-border text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-2">პროფილი იტვირთება...</p>
+        </div>
+      } @else if (currentUser) {
+        <div class="card shadow-sm border-0 rounded-4">
+          <div class="card-body p-5 text-center">
+
+            <div class="bg-dark text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 100px; height: 100px;">
+              <i class="bi bi-person-fill fs-1" style="font-size: 3rem;"></i>
+            </div>
+
+            <h3 class="card-title fw-bold text-capitalize mb-1">
+              {{ currentUser.name.firstname }} {{ currentUser.name.lastname }}
+            </h3>
+            <p class="text-muted mb-4">&#64;{{ currentUser.username }}</p>
+
+            <hr class="my-4">
+
+            <div class="text-start">
+              <div class="mb-3 d-flex align-items-center">
+                <i class="bi bi-envelope text-muted me-3 fs-5"></i>
+                <div>
+                  <small class="text-muted d-block">Email Address</small>
+                  <span class="fw-medium">{{ currentUser.email }}</span>
+                </div>
+              </div>
+
+              <div class="mb-3 d-flex align-items-center">
+                <i class="bi bi-telephone text-muted me-3 fs-5"></i>
+                <div>
+                  <small class="text-muted d-block">Phone Number</small>
+                  <span class="fw-medium">{{ currentUser.phone }}</span>
+                </div>
+              </div>
+
+              <div class="mb-3 d-flex align-items-center">
+                <i class="bi bi-geo-alt text-muted me-3 fs-5"></i>
+                <div>
+                  <small class="text-muted d-block">Shipping Address</small>
+                  <span class="fw-medium text-capitalize">
+                    {{ currentUser.address.city }}, {{ currentUser.address.street }} {{ currentUser.address.number }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      } @else {
+        <div class="alert alert-danger text-center rounded-3" role="alert">
+          მომხმარებლის მონაცემები ვერ მოიძებნა. ხელახლა გაიარეთ ავტორიზაცია.
+        </div>
+      }
+
+    </div>
+  </div>
+</div>

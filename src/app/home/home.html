@@ -1,0 +1,28 @@
+<div class="container my-5">
+  <h2 class="section-title mb-4">New Arrivals</h2>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    @for (item of productList; track $index) {
+      <div class="col">
+        <div class="product-card h-100">
+          <div class="product-img-wrapper">
+            <span class="category-badge">{{item.category}}</span>
+            <img [src]="item.image" class="product-img" alt="{{item.title}}">
+          </div>
+
+          <div class="product-info">
+            <h5 class="product-name">{{item.title}}</h5>
+            <div class="product-meta">
+              <span class="product-price">${{item.price}}</span>
+
+              <button class="btn-add-to-cart" (click)="addToCart(item.id)">
+                <i class="bi bi-bag-plus"></i> Add to Cart
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
